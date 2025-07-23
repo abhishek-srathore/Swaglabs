@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Swaglabs" verbose="4">
+    <listeners>
+        <listener class-name="com.qa.Swaglabs.testUtils.ExtentListener"/>
+    </listeners>
+    <test name="loginTest">
+        <classes>
+            <class name="com.qa.Swaglabs.tests.LoginPageTest"/>
+        </classes> 
+    </test>
+    
+     <test name="homePageTest">
+    	<classes>
+          <class name="com.qa.Swaglabs.tests.HomePageTest"/>
+        </classes>
+    </test>
+</suite>
