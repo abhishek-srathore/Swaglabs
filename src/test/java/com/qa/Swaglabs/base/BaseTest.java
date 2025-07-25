@@ -4,10 +4,11 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 
+import org.testng.annotations.Parameters; 
 import com.qa.Swaglabs.factory.DriverFactory;
 import com.qa.Swaglabs.pages.HomePage;
 import com.qa.Swaglabs.pages.LoginPage;
@@ -35,12 +36,13 @@ public class BaseTest {
 		        e.printStackTrace();
 		    }
 		}
-
+		
 		// Setup method to initialize WebDriver and open base URL before tests
+		@Parameters("browser")
 		@BeforeClass
-		public void setup() throws IOException {
+		public void setup(@Optional("") String browser ) throws IOException {
 		    logger.info("Test setup started.");
-		    DriverFactory.initDriver();
+		    DriverFactory.initDriver(browser);
 		    
 		    String baseUrl = readProp.getProperty("testurl");
 		    logger.info("Navigating to base URL: {}", baseUrl);

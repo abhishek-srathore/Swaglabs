@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.testng.ITestContext;
@@ -22,17 +24,16 @@ import com.qa.Swaglabs.utils.ReadProperty;
 // TestNG listener for ExtentReports integration and screenshot capture
 public class ExtentListener  implements ITestListener{
 
-
-		
-		private ExtentReports extentReports;		// ThreadLocal for ExtentReports instance (one per thread)
-		private static ThreadLocal<ExtentTest> currentTest = new ThreadLocal<>();
+		private static Map<String, ExtentReports> reportsMap = new ConcurrentHashMap<>();
+		private static Map<String, ExtentTest> currentTestMap = new ConcurrentHashMap<>();
+		private static Map<String, String> reportNameMap = new ConcurrentHashMap<>();
 		private String reportName;					// ThreadLocal for report file name
 		
 		// Flag to ensure cleanup is done only once
 		private static boolean isCleaned = false; // Ensure cleanup is done only once.
-		public static ReadProperty readProperty;										// ReadProperty utility for config values
-
+		public static ReadProperty readProperty;	// ReadProperty utility for config values
 		// Called before any test starts, sets up ExtentReports and cleans old reports/screenshots
+				
 		@Override
 		public void onStart(ITestContext context) {
 		    try {
@@ -47,38 +48,47 @@ public class ExtentListener  implements ITestListener{
 		        isCleaned = true;
 		    }
 
+		    String browser = context.getCurrentXmlTest().getParameter("browser");
+		    if (browser == null) {
+		        browser = readProperty.getProperty("browser");
+		    }
+		    
 		    // Generate unique report name
 		    String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
-		    String threadName = Thread.currentThread().getName();
-		    String uniqueReportName = "Test-Report-" + timeStamp + "-" + threadName + ".html";
+		    String suiteName = context.getSuite().getName();
+		    String uniqueReportName = "Test-Report-" + browser + timeStamp + ".html";
+		    String reportPath = ".\\reports\\" + uniqueReportName;
 		    reportName = uniqueReportName;
 
 		    // Create an instance of ExtentSparkReporter
-		    String reportPath = ".\\reports\\" + uniqueReportName;
 		    ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
 		    sparkReporter.config().setDocumentTitle("Automation Report");
-		    sparkReporter.config().setReportName("Functional Testing - " + threadName);
+		    sparkReporter.config().setReportName("Functional Testing - " + suiteName + "-" + browser);
 		    sparkReporter.config().setTheme(Theme.DARK);
 
-		    // Set custom logo for the report (commented out)
-		    String logoPath = System.getProperty("user.dir") + "\\src\\test\\resources\\logo\\logo.jpeg" ;
-		    String logoHTML = "<img src='" + logoPath + "' alt='Custom Logo' style='width: 80px; height: auto;' />";
-		    sparkReporter.config().setReportName("<html><body>" + logoHTML + "<br/>Functional Testing - " + threadName + "</body></html>");
+		    // Set custom logo for the report 
+		    String logoPath = System.getProperty("user.dir") + "\\src\\test\\resources\\logo\\logoNew.png" ;
+		    String logoHTML = "<img src='" + logoPath + "' alt='Custom Logo' style='width: 30px; height: auto;' />";
+		    sparkReporter.config().setReportName("<html><body>" + logoHTML + "<br/>Functional Testing - " + suiteName +"<br/>" +browser.toUpperCase() + "</body></html>");
 
 		    ExtentReports extent = new ExtentReports();
 		    extent.attachReporter(sparkReporter);
 
 		    // Set system info from properties file
 		    setSystemInfo(extent, context);
-
-		    extentReports = extent;
+		    reportsMap.put(browser, extent);
+		    reportNameMap.put(browser, reportPath);
 		}
+		
+		public static ExtentTest getTest() {
+	        return currentTestMap.get(readProperty.getProperty("browser")); // This method is no longer needed as per new logic
+	    }
 
 		// Called when a test passes, logs result and adds screenshot
 		@Override
 		public void onTestSuccess(ITestResult result) {
 		    createTestEntry(result);
-		    currentTest.get().log(Status.PASS, "Test method " + result.getMethod().getMethodName() + " passed successfully.");
+		    getCurrentTest(result).log(Status.PASS, "Test method " + result.getMethod().getMethodName() + " passed successfully.");
 
 		    // Capture and add screenshot after success
 		    addScreenshot(result);
@@ -88,8 +98,8 @@ public class ExtentListener  implements ITestListener{
 		@Override
 		public void onTestFailure(ITestResult result) {
 		    createTestEntry(result);
-		    currentTest.get().log(Status.FAIL, "Test method " + result.getMethod().getMethodName() + " failed");
-		    currentTest.get().log(Status.INFO, "Failure reason: " + result.getThrowable().getMessage());
+		    getCurrentTest(result).log(Status.FAIL, "Test method " + result.getMethod().getMethodName() + " failed");
+		    getCurrentTest(result).log(Status.INFO, "Failure reason: " + result.getThrowable().getMessage());
 
 		    // Capture and add screenshot after failure
 		    addScreenshot(result);
@@ -99,8 +109,8 @@ public class ExtentListener  implements ITestListener{
 		@Override
 		public void onTestSkipped(ITestResult result) {
 		    createTestEntry(result);
-		    currentTest.get().log(Status.SKIP, "Test method " + result.getMethod().getMethodName() + " was skipped");
-		    currentTest.get().log(Status.INFO, "Skipped due to: " + result.getThrowable().getMessage());
+		    getCurrentTest(result).log(Status.SKIP, "Test method " + result.getMethod().getMethodName() + " was skipped");
+		    getCurrentTest(result).log(Status.INFO, "Skipped due to: " + result.getThrowable().getMessage());
 
 		    // Capture and add screenshot after skip
 		    addScreenshot(result);
@@ -108,16 +118,39 @@ public class ExtentListener  implements ITestListener{
 
 		// Creates a new test entry in the report for the current test method
 		private void createTestEntry(ITestResult result) {
-		    ExtentReports extent = extentReports;
-		    currentTest.set(extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription()));
-		    currentTest.get().assignCategory(result.getMethod().getGroups());
+			
+				ExtentReports extent = getExtentReports(result);
+			    // Extract test description (use as Title)
+			    String testTitle = result.getMethod().getDescription();
+			    if (testTitle == null || testTitle.trim().isEmpty()) {
+			        testTitle = result.getMethod().getMethodName(); // fallback
+			    }
+
+			    // Use method name as the description (visible under the title)
+			    String methodDescription = "Method: " + result.getMethod().getMethodName();
+
+			    // Create the Extent test with title and method description
+			    ExtentTest test = extent.createTest(testTitle, methodDescription);
+			    setCurrentTest(result, test);
+
+			    // Assign groups (categories)
+			    getCurrentTest(result).assignCategory(result.getMethod().getGroups());
+			
 		}
+		
+		
+		
 
 		// Called after all tests finish, flushes the report
 		@Override
 		public void onFinish(ITestContext context) {
-		    if (extentReports != null) {
-		        extentReports.flush();
+		    String browser = context.getCurrentXmlTest().getParameter("browser");
+		    if (browser == null) {
+		        browser = readProperty.getProperty("browser");
+		    }
+		    ExtentReports extent = reportsMap.get(browser);
+		    if (extent != null) {
+		        extent.flush();
 		    }
 		}
 
@@ -155,10 +188,34 @@ public class ExtentListener  implements ITestListener{
 		        }
 		    }
 
+		    private ExtentReports getExtentReports(ITestResult result) {
+		        String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
+		        if (browser == null) {
+		            browser = readProperty.getProperty("browser");
+		        }
+		        return reportsMap.get(browser);
+		    }
+
+		    private void setCurrentTest(ITestResult result, ExtentTest test) {
+		        String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
+		        if (browser == null) {
+		            browser = readProperty.getProperty("browser");
+		        }
+		        currentTestMap.put(browser, test);
+		    }
+
+		    private ExtentTest getCurrentTest(ITestResult result) {
+		        String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
+		        if (browser == null) {
+		            browser = readProperty.getProperty("browser");
+		        }
+		        return currentTestMap.get(browser);
+		    }
+
 		    private void addScreenshot(ITestResult result) {
 		        String screenshotPath = ScreenshotUtil.captureScreenshot(com.qa.Swaglabs.factory.DriverFactory.getDriver(), result);
 		        if (screenshotPath != null) {
-		            currentTest.get().log(Status.INFO, "Screenshot: " + currentTest.get().addScreenCaptureFromPath(screenshotPath));
+		            getCurrentTest(result).log(Status.INFO, "Screenshot: " + getCurrentTest(result).addScreenCaptureFromPath(screenshotPath));
 		        }
 		    }
 		}

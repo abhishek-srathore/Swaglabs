@@ -91,7 +91,7 @@
 					<reuseForks>true</reuseForks>
 					<suiteXmlFiles>
 
-						<suiteXmlFile>src/test/resources/testRunner/testng.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/resources/testRunner/testng-parallel.xml</suiteXmlFile>
 						<!--<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
 					</suiteXmlFiles>
 					<argLine>

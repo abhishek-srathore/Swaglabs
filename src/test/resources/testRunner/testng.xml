@@ -7,12 +7,7 @@
     <test name="loginTest">
         <classes>
             <class name="com.qa.Swaglabs.tests.LoginPageTest"/>
+            <class name="com.qa.Swaglabs.tests.HomePageTest"/>
         </classes> 
-    </test>
-    
-     <test name="homePageTest">
-    	<classes>
-          <class name="com.qa.Swaglabs.tests.HomePageTest"/>
-        </classes>
     </test>
 </suite>

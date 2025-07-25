@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>TestNG:  loginTest_edge</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>loginTest_edge</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>10/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Jul 24 16:26:10 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>33 seconds (33840 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.HomePageTest.verifyAddtoCart()'><b>verifyAddtoCart</b><br>Test class: com.qa.Swaglabs.tests.HomePageTest<br>Test method: To verify that Add to Cart functionality works</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[text()=&apos;Sauce Labs Bike Light&apos;]/ancestor::div[@class=&apos;inventory_item&apos;]//button (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.6&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 138.0.3351.95, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:65024}, msedge: {msedgedriverVersion: 138.0.3351.95 (b095f7295f46..., userDataDir: C:\Users\ABHISH~1.RAT\AppDa...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65024/devtoo..., se:cdpVersion: 138.0.3351.95, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 75a9251e92765b8cb91c43fb3f9d6371
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.qa.Swaglabs.utils.ElementUtil.WaitForElementVisiblity(ElementUtil.java:56)
+	at com.qa.Swaglabs.pages.HomePage.verifyAddToCart(HomePage.java:97)
+	at com.qa.Swaglabs.tests.HomePageTest.verifyAddtoCart(HomePageTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div><a href='#' onClick='toggleBox("stack-trace342362797", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace342362797'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[text()=&apos;Sauce Labs Bike Light&apos;]/ancestor::div[@class=&apos;inventory_item&apos;]//button (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.6&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 138.0.3351.95, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:65024}, msedge: {msedgedriverVersion: 138.0.3351.95 (b095f7295f46..., userDataDir: C:\Users\ABHISH~1.RAT\AppDa...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65024/devtoo..., se:cdpVersion: 138.0.3351.95, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 75a9251e92765b8cb91c43fb3f9d6371
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.qa.Swaglabs.utils.ElementUtil.WaitForElementVisiblity(ElementUtil.java:56)
+	at com.qa.Swaglabs.pages.HomePage.verifyAddToCart(HomePage.java:97)
+	at com.qa.Swaglabs.tests.HomePageTest.verifyAddtoCart(HomePageTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>10</td>
+<td>com.qa.Swaglabs.tests.HomePageTest@6304101a</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.HomePageTest.verifyHomePageLoaded()'><b>verifyHomePageLoaded</b><br>Test class: com.qa.Swaglabs.tests.HomePageTest<br>Test method: To verify that the Home Page loads and displays 6 products</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.HomePageTest@6304101a</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.HomePageTest.verifyHomePageTitle()'><b>verifyHomePageTitle</b><br>Test class: com.qa.Swaglabs.tests.HomePageTest<br>Test method: To verify Page Title of Homepage</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.HomePageTest@6304101a</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.LoginPageTest.verifyWrongCreds()'><b>verifyWrongCreds</b><br>Test class: com.qa.Swaglabs.tests.LoginPageTest<br>Test method: To verify error messages for invalid login credentials<br>Parameters: , Test, Epic sadface: Username is required</td>
+<td></td>
+<td>1</td>
+<td>com.qa.Swaglabs.tests.LoginPageTest@4b7dc788</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.LoginPageTest.verifyLogin()'><b>verifyLogin</b><br>Test class: com.qa.Swaglabs.tests.LoginPageTest<br>Test method: To verify successful login with valid credentials</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.LoginPageTest@4b7dc788</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.LoginPageTest.verifyUrl()'><b>verifyUrl</b><br>Test class: com.qa.Swaglabs.tests.LoginPageTest<br>Test method: To verify the Login Page URL is correct</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.LoginPageTest@4b7dc788</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.HomePageTest.verifyHomeUrl()'><b>verifyHomeUrl</b><br>Test class: com.qa.Swaglabs.tests.HomePageTest<br>Test method: To Verify Home Page URL</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.HomePageTest@6304101a</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.LoginPageTest.verifyWrongCreds()'><b>verifyWrongCreds</b><br>Test class: com.qa.Swaglabs.tests.LoginPageTest<br>Test method: To verify error messages for invalid login credentials<br>Parameters: Test, , Epic sadface: Password is required</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.LoginPageTest@4b7dc788</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.LoginPageTest.verifyWrongCreds()'><b>verifyWrongCreds</b><br>Test class: com.qa.Swaglabs.tests.LoginPageTest<br>Test method: To verify error messages for invalid login credentials<br>Parameters: Test, Test, Epic sadface: Username and password do not match any user in this service</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.LoginPageTest@4b7dc788</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.HomePageTest.verifyDefaultSort()'><b>verifyDefaultSort</b><br>Test class: com.qa.Swaglabs.tests.HomePageTest<br>Test method: To verify that default sorting is applied on Home Page</td>
+<td></td>
+<td>10</td>
+<td>com.qa.Swaglabs.tests.HomePageTest@6304101a</td></tr>
+<tr>
+<td title='com.qa.Swaglabs.tests.LoginPageTest.verifyWrongCreds()'><b>verifyWrongCreds</b><br>Test class: com.qa.Swaglabs.tests.LoginPageTest<br>Test method: To verify error messages for invalid login credentials<br>Parameters: , , Epic sadface: Username is required</td>
+<td></td>
+<td>0</td>
+<td>com.qa.Swaglabs.tests.LoginPageTest@4b7dc788</td></tr>
+</table><p>
+</body>
+</html>

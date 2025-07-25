@@ -1,205 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="9" failed="1" skipped="0">
+<testng-results ignored="4" total="7" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-23T13:19:10 IST" name="Swaglabs" finished-at="2025-07-23T13:19:22 IST" duration-ms="11729">
+  <suite started-at="2025-07-25T13:47:01 IST" name="Default suite" finished-at="2025-07-25T13:47:16 IST" duration-ms="15128">
     <groups>
     </groups>
-    <test started-at="2025-07-23T13:19:10 IST" name="homePageTest" finished-at="2025-07-23T13:19:19 IST" duration-ms="9543">
+    <test started-at="2025-07-25T13:47:01 IST" name="Default test" finished-at="2025-07-25T13:47:16 IST" duration-ms="15128">
       <class name="com.qa.Swaglabs.tests.HomePageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:10 IST" name="setup" finished-at="2025-07-23T13:19:17 IST" duration-ms="6481" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@55c53a33]" started-at="2025-07-25T13:47:01 IST" name="setup" finished-at="2025-07-25T13:47:04 IST" duration-ms="3296" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="homePageSetup()[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:17 IST" name="homePageSetup" finished-at="2025-07-23T13:19:17 IST" duration-ms="499" status="PASS">
+        <test-method is-config="true" signature="homePageSetup()[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@55c53a33]" started-at="2025-07-25T13:47:04 IST" name="homePageSetup" finished-at="2025-07-25T13:47:05 IST" duration-ms="713" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- homePageSetup -->
-        <test-method signature="verifyHomeUrl()[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:17 IST" name="verifyHomeUrl" description="To Verify Home Page URL" finished-at="2025-07-23T13:19:17 IST" duration-ms="27" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [] but found [https://www.saucedemo.com/inventory.html]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [] but found [https://www.saucedemo.com/inventory.html]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1590)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at org.testng.Assert.assertEquals(Assert.java:666)
-at com.qa.Swaglabs.tests.HomePageTest.verifyHomeUrl(HomePageTest.java:29)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
-at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
-at java.base/java.lang.Thread.run(Thread.java:1583)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyHomeUrl -->
-        <test-method signature="verifyHomePageLoaded()[pri:1, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:17 IST" name="verifyHomePageLoaded" finished-at="2025-07-23T13:19:17 IST" duration-ms="108" status="PASS">
+        <test-method signature="verifyHomePageLoaded()[pri:5, instance:com.qa.Swaglabs.tests.HomePageTest@55c53a33]" started-at="2025-07-25T13:47:05 IST" name="verifyHomePageLoaded" description="To verify that the Home Page loads and displays 6 products" finished-at="2025-07-25T13:47:05 IST" duration-ms="268" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyHomePageLoaded -->
-        <test-method signature="verifyAddtoCart()[pri:2, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:18 IST" name="verifyAddtoCart" finished-at="2025-07-23T13:19:18 IST" duration-ms="154" status="PASS">
+        <test-method signature="verifyAddtoCart()[pri:6, instance:com.qa.Swaglabs.tests.HomePageTest@55c53a33]" started-at="2025-07-25T13:47:05 IST" name="verifyAddtoCart" description="To verify that Add to Cart functionality works" finished-at="2025-07-25T13:47:06 IST" depends-on-methods="com.qa.Swaglabs.tests.HomePageTest.verifyHomePageLoaded" duration-ms="172" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddtoCart -->
-        <test-method signature="verifyDefaultSort()[pri:3, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:18 IST" name="verifyDefaultSort" finished-at="2025-07-23T13:19:18 IST" duration-ms="69" status="PASS">
+        <test-method signature="verifyRemoveFromBasket()[pri:7, instance:com.qa.Swaglabs.tests.HomePageTest@55c53a33]" started-at="2025-07-25T13:47:06 IST" name="verifyRemoveFromBasket" description="To verify that Remove from Cart functionality works" finished-at="2025-07-25T13:47:16 IST" depends-on-methods="com.qa.Swaglabs.tests.HomePageTest.verifyAddtoCart" duration-ms="10135" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyDefaultSort -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@5cdec700]" started-at="2025-07-23T13:19:18 IST" name="tearDown" finished-at="2025-07-23T13:19:19 IST" duration-ms="1395" status="PASS">
+        </test-method> <!-- verifyRemoveFromBasket -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.Swaglabs.tests.HomePageTest@55c53a33]" started-at="2025-07-25T13:47:16 IST" name="tearDown" finished-at="2025-07-25T13:47:16 IST" duration-ms="498" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.qa.Swaglabs.tests.HomePageTest -->
-    </test> <!-- homePageTest -->
-    <test started-at="2025-07-23T13:19:10 IST" name="loginTest" finished-at="2025-07-23T13:19:22 IST" duration-ms="11729">
-      <class name="com.qa.Swaglabs.tests.LoginPageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:10 IST" name="setup" finished-at="2025-07-23T13:19:15 IST" duration-ms="5066" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:15 IST" name="goToLoginPage" finished-at="2025-07-23T13:19:16 IST" duration-ms="573" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToLoginPage -->
-        <test-method signature="verifyUrl()[pri:1, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:16 IST" name="verifyUrl" finished-at="2025-07-23T13:19:16 IST" duration-ms="46" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyUrl -->
-        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:16 IST" name="goToLoginPage" finished-at="2025-07-23T13:19:16 IST" duration-ms="293" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToLoginPage -->
-        <test-method signature="verifyWrongCreds(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:16 IST" name="verifyWrongCreds" data-provider="invalidCredentials" finished-at="2025-07-23T13:19:17 IST" duration-ms="462" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Epic sadface: Username is required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyWrongCreds -->
-        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:17 IST" name="goToLoginPage" finished-at="2025-07-23T13:19:17 IST" duration-ms="298" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToLoginPage -->
-        <test-method signature="verifyWrongCreds(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:17 IST" name="verifyWrongCreds" data-provider="invalidCredentials" finished-at="2025-07-23T13:19:18 IST" duration-ms="223" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Test]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Epic sadface: Username is required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyWrongCreds -->
-        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:18 IST" name="goToLoginPage" finished-at="2025-07-23T13:19:18 IST" duration-ms="183" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToLoginPage -->
-        <test-method signature="verifyWrongCreds(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:18 IST" name="verifyWrongCreds" data-provider="invalidCredentials" finished-at="2025-07-23T13:19:18 IST" duration-ms="178" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Test]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Epic sadface: Password is required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyWrongCreds -->
-        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:18 IST" name="goToLoginPage" finished-at="2025-07-23T13:19:18 IST" duration-ms="108" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToLoginPage -->
-        <test-method signature="verifyWrongCreds(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:18 IST" name="verifyWrongCreds" data-provider="invalidCredentials" finished-at="2025-07-23T13:19:18 IST" duration-ms="262" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Test]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Test]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Epic sadface: Username and password do not match any user in this service]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyWrongCreds -->
-        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:18 IST" name="goToLoginPage" finished-at="2025-07-23T13:19:19 IST" duration-ms="202" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- goToLoginPage -->
-        <test-method signature="verifyLogin()[pri:3, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:19 IST" name="verifyLogin" finished-at="2025-07-23T13:19:19 IST" duration-ms="261" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.Swaglabs.tests.LoginPageTest@48c76607]" started-at="2025-07-23T13:19:19 IST" name="tearDown" finished-at="2025-07-23T13:19:22 IST" duration-ms="2426" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.Swaglabs.tests.LoginPageTest -->
-    </test> <!-- loginTest -->
-  </suite> <!-- Swaglabs -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

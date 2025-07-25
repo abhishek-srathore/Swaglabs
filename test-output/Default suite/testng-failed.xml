@@ -5,9 +5,11 @@
     <classes>
       <class name="com.qa.Swaglabs.tests.HomePageTest">
         <methods>
+          <include name="verifyAddtoCart"/>
           <include name="homePageSetup"/>
+          <include name="verifyRemoveFromBasket"/>
           <include name="setup"/>
-          <include name="verifyDefaultSort"/>
+          <include name="verifyHomePageLoaded"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.qa.Swaglabs.tests.HomePageTest -->

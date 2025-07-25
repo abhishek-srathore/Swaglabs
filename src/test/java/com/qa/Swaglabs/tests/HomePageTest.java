@@ -1,6 +1,7 @@
 package com.qa.Swaglabs.tests;
 
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,31 +21,57 @@ public class HomePageTest extends BaseTest{
 
 	@BeforeClass
 	public void homePageSetup() throws IOException {
-		loginPage.insertCredential(readProp.getProperty("username"),readProp.getProperty("password"));
+		com.qa.Swaglabs.factory.DriverFactory.getDriver().navigate().refresh();
+		loginPage.insertValidCredential(readProp.getProperty("username"),readProp.getProperty("password"));
 	}
 
-	@Test(description = "To Verify Home Page URL" , priority = 0 )
-	public void verifyHomeUrl() {
-		String url = homePage.verifyHomePageUrl();
-		Assert.assertEquals(url, "");
+
+	@Test(description = "To Verify Home Page URL" , priority = 3 )
+	public void verifyHomePageUrl() {
+		String url = homePage.getHomePageUrl();
+		Assert.assertEquals(url, readProp.getProperty("homePageUrl"));
+		}
+	
+	@Test(description ="To verify Page Title of Homepage", priority =4)
+	public void verifyHomePageTitle() {
+		String title = homePage.getHomePageTitle();
+		Assert.assertEquals(title, "Swag Labs");
 	}
 	
-	@Test(priority = 1)
+	@Test(description = "To verify that the Home Page loads and displays 6 products", priority = 5)
 	public void verifyHomePageLoaded() {
 		logger.info("verification of homePage");
-		Assert.assertEquals(homePage.isProductsDisplayed(),6);
+		Assert.assertEquals(homePage.loadHomePage(),6);
 	}
 	
-	@Test(priority =2)
+	@Test(description = "To verify that Add to Cart functionality works", 
+			dependsOnMethods = "verifyHomePageLoaded", 
+			priority =6)
 	public void verifyAddtoCart() {
 		logger.info("verification add to cart");
-		Assert.assertEquals(homePage.verifyAddToCart(), "1");
+		Assert.assertEquals(homePage.addProductToCart(), "1");
 	}
 	
-	@Test(priority = 3)
+	@Test(description = "To verify that Remove from Cart functionality works", 
+			dependsOnMethods = "verifyAddtoCart",
+			priority = 7)
+	public void verifyRemoveFromBasket() {
+		logger.info("verification removing from cart");
+		Assert.assertEquals(homePage.removeProductfromCart(), "0", "Last Product was removed from cart successfully");
+	}
+	
+	@Test(description = "To verify that default sorting is applied on Home Page", priority = 7)
 	public void verifyDefaultSort() {
-		
-		Assert.assertEquals(homePage.defaultSorting(), true);
+		logger.info("verifying sorting ");
+		Assert.assertEquals(homePage.defaultSortCheck(), true);
 	}
 	
+	
+	@Test(description = "To verify that reverse sorting is applied on Home Page", 
+			dependsOnMethods = "verifyHomePageLoaded", 
+			priority = 8)
+	public void verifyReverseSort() {
+		Assert.assertEquals(homePage.reverseSortCheck(), true);
+		
+	}
 }

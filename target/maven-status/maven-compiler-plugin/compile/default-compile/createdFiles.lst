@@ -1,0 +1,7 @@
+com\qa\Swaglabs\utils\JavaScriptUtil.class
+com\qa\Swaglabs\pages\HomePage.class
+com\qa\Swaglabs\pages\ProductDetail.class
+com\qa\Swaglabs\utils\ReadProperty.class
+com\qa\Swaglabs\pages\LoginPage.class
+com\qa\Swaglabs\factory\DriverFactory.class
+com\qa\Swaglabs\utils\ElementUtil.class

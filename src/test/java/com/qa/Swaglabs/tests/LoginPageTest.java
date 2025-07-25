@@ -8,9 +8,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-
+import com.aventstack.extentreports.Status;
 import com.qa.Swaglabs.base.BaseTest;
+import com.qa.Swaglabs.testUtils.ExtentListener;
 
+/**
+ * This class contains tests for the Login Page functionality.
+ */
 @Listeners
 public class LoginPageTest extends BaseTest {
 	
@@ -18,14 +22,14 @@ private static final Logger logger = LogManager.getLogger(LoginPageTest.class);
 
 @BeforeMethod
 public void goToLoginPage() {
-    com.qa.Swaglabs.factory.DriverFactory.getDriver().get(readProp.getProperty("testurl"));
+    com.qa.Swaglabs.factory.DriverFactory.getDriver().navigate().refresh();;
 }
 
 
-@Test(priority = 1)
-public void verifyUrl() {
+@Test(description = "To verify the Login Page URL is correct", priority = 0)
+public void verifyLoginUrl() {
 	logger.info("Running test: verifyUrl");
-	String urlName = loginPage.getUrl();
+	String urlName = loginPage.getLoginUrl();
 	logger.info("Asserting URL: ===expected  " + readProp.getProperty("testUrl")+  "     ===actual '{}'   "   +  urlName);
 	Assert.assertEquals(urlName, readProp.getProperty("testurl"));
 	logger.info("Test verifyUrl passed");
@@ -42,18 +46,25 @@ public Object[][] invalidCredentials(){
 	};
 }
 	
-@Test(dataProvider= "invalidCredentials", priority = 1)
-public void verifyWrongCreds(String username, String password, String message) {
+@Test(description = "To verify error messages for invalid login credentials", dataProvider= "invalidCredentials", priority = 1)
+public void verifyInvalidCreadentials(String username, String password, String message) {
+	// Logging the test data to Extent Report
+    ExtentListener.getTest().log(Status.INFO,
+        "Test Data: <br>" +
+        "<b>Username:</b> " + username + "<br>" +
+        "<b>Password:</b> " + password + "<br>" +
+        "<b>Expected Message:</b> " + message
+    );
 	System.out.println("Trying with: [" + username + "] and [" + password + "]");
-	String errorMsg = loginPage.validateWrongCredentials(username, password);
+	String errorMsg = loginPage.insertInvalidCredentials(username, password);
 	Assert.assertEquals(errorMsg, message);
 }
 
 
-@Test(priority = 3)
+@Test(description = "To verify successful login with valid credentials", priority = 2)
 public void verifyLogin() {
 	logger.info("Verifying correct logins");
-	loginPage.insertCredential(readProp.getProperty("username"),readProp.getProperty("password"));
+	loginPage.insertValidCredential(readProp.getProperty("username"),readProp.getProperty("password"));
 }
 
 

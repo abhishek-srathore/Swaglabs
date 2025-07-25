@@ -16,13 +16,13 @@ public class ProductDetalsTest extends BaseTest {
 	@BeforeClass
 	public void selectBagPack() {
 		logger.info("Performing Login");
-		loginPage.insertCredential(readProp.getProperty("username"),readProp.getProperty("password"));
+		loginPage.insertValidCredential(readProp.getProperty("username"),readProp.getProperty("password"));
 		logger.info("Selecting BagPack");
 		homePage.clickBagPack();
 	}
 
 	
-	@Test
+	@Test(description = "To verify the BagPack product name is displayed correctly")
 	public void verifyBagPackName() {
 		Assert.assertEquals(productDetail, "Sauce Labs Backpack" );
 	}

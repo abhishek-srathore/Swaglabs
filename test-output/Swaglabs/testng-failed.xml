@@ -9,8 +9,8 @@
       <class name="com.qa.Swaglabs.tests.HomePageTest">
         <methods>
           <include name="homePageSetup"/>
-          <include name="verifyHomeUrl"/>
           <include name="setup"/>
+          <include name="verifyReverseSort"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.qa.Swaglabs.tests.HomePageTest -->

@@ -1,0 +1,6 @@
+com\qa\Swaglabs\tests\LoginPageTest.class
+com\qa\Swaglabs\testUtils\ScreenshotUtil.class
+com\qa\Swaglabs\testUtils\ExtentListener.class
+com\qa\Swaglabs\base\BaseTest.class
+com\qa\Swaglabs\tests\ProductDetalsTest.class
+com\qa\Swaglabs\tests\HomePageTest.class
